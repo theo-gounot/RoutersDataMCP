@@ -1,0 +1,9 @@
+mcp
+psycopg[binary]
+pandas
+tabulate
+python-dotenv
+pytest
+pytest-asyncio
+numpy
+scipy
