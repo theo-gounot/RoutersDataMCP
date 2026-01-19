@@ -38,7 +38,7 @@ async def get_db_connection():
 
 # --- Category A: Introspection Tools ---
 
-@mcp.tool()
+@mcp.tool(description="Lists all available metric tables and their numeric columns in the database.")
 async def list_available_metrics() -> str:
     """
     Lists all available metric tables and their numeric columns in the database.
@@ -81,7 +81,7 @@ async def list_available_metrics() -> str:
     finally:
         await conn.close()
 
-@mcp.tool()
+@mcp.tool(description="Retrieves the schema information (column names and data types) for a specific table.")
 async def describe_table_schema(table_name: str) -> str:
     """
     Retrieves the schema information (column names and data types) for a specific table.
@@ -115,7 +115,7 @@ async def describe_table_schema(table_name: str) -> str:
 
 # --- Category B: Relationship & Inventory Tools ---
 
-@mcp.tool()
+@mcp.tool(description="Retrieves a summary of all routers in the network inventory.")
 async def get_network_inventory() -> str:
     """
     Retrieves a summary of all routers in the network inventory.
@@ -142,7 +142,7 @@ async def get_network_inventory() -> str:
     finally:
         await conn.close()
 
-@mcp.tool()
+@mcp.tool(description="Lists all devices connected to a specific router.")
 async def list_router_devices(router_mac: str) -> str:
     """
     Lists all devices connected to a specific router.
@@ -173,7 +173,7 @@ async def list_router_devices(router_mac: str) -> str:
     finally:
         await conn.close()
 
-@mcp.tool()
+@mcp.tool(description="Retrieves detailed information about a specific device, including its parent router details.")
 async def get_device_full_info(device_mac: str) -> str:
     """
     Retrieves detailed information about a specific device, including its parent router details.
@@ -207,7 +207,7 @@ async def get_device_full_info(device_mac: str) -> str:
 
 # --- Category C: Time-Series Analysis Tools ---
 
-@mcp.tool()
+@mcp.tool(description="Computes aggregated metrics (average and maximum) for a given device over a specified time window.")
 async def get_metrics_aggregate(
     table_name: str, 
     column_names: List[str], 
@@ -283,7 +283,7 @@ async def get_metrics_aggregate(
     finally:
         await conn.close()
 
-@mcp.tool()
+@mcp.tool(description="Execute a SQL query and detect change points on a specific metric column using the VWCD algorithm.")
 async def analyze_change_points_from_sql(sql_query: str, metric_column: str) -> str:
     """
     Execute a SQL query and detect change points on a specific metric column using the VWCD algorithm.
@@ -360,7 +360,7 @@ async def analyze_change_points_from_sql(sql_query: str, metric_column: str) -> 
 
 # --- Category D: Query Sandbox ---
 
-@mcp.tool()
+@mcp.tool(description="Executes a read-only SQL query provided by the user.")
 async def execute_readonly_query(query: str) -> str:
     """
     Executes a read-only SQL query provided by the user.
