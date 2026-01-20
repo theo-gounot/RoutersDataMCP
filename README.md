@@ -16,19 +16,13 @@ This is a **Model Context Protocol (MCP)** server designed to expose network mon
 
 ## Installation
 
-1.  **Clone the repository:**
-    ```bash
-    git clone <repository_url>
-    cd RoutersMCP
-    ```
-
-2.  **Create a virtual environment (recommended):**
+1.  **Create a virtual environment (recommended):**
     ```bash
     python3 -m venv .venv
     source .venv/bin/activate
     ```
 
-3.  **Install dependencies:**
+2.  **Install dependencies:**
     ```bash
     pip install -r requirements.txt
     ```

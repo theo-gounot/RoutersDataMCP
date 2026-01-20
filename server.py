@@ -61,7 +61,12 @@ async def list_available_metrics() -> str:
             """
             await cur.execute(tables_query)
             tables_records = await cur.fetchall()
-            tables = [r['table_name'] for r in tables_records]
+            tables = []
+            for r in tables_records:
+                t_name = r['table_name']
+                if isinstance(t_name, bytes):
+                    t_name = t_name.decode('utf-8')
+                tables.append(t_name)
             
             result = {}
             for table in tables:
